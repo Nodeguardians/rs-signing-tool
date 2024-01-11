@@ -1,0 +1,14 @@
+[Unit]
+Description=Signature Check Service
+
+[Service]
+User=neutron
+WorkingDirectory=/home/neutron
+ExecStart=/bin/bash /home/neutron/rs-signature-check/check_signatures_per_window.sh
+StandardOutput=append:/home/neutron/ng_jail_window_signatures
+StandardError=inherit
+Environment="FROM_BLOCK_HEIGHT=8331958"
+Environment="TO_BLOCK_HEIGHT=8367958"
+
+[Install]
+WantedBy=multi-user.target
